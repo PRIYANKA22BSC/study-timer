@@ -2,10 +2,10 @@ let timer;
 let isPaused = false;
 let timeLeft = 25 * 60; 
 
-const timerDisplay = document.getElementById('timer-display');
-const startBtn = document.getElementById('start-btn');
+const display = document.getElementById('timer-display');
+const strtBtn = document.getElementById('strt-btn');
 const pauseBtn = document.getElementById('pause-btn');
-const stopBtn = document.getElementById('stop-btn');
+const resetBtn = document.getElementById('reset-btn');
 
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -13,44 +13,44 @@ function formatTime(seconds) {
     return `${minutes < 10 ? '0' + minutes : minutes}:${remainingSeconds < 10 ? '0' + remainingSeconds : remainingSeconds}`;
 }
 
-function startTimer() {
+function strtTimer() {
     if (isPaused) {
         isPaused = false;
     } else {
         timer = setInterval(() => {
             if (timeLeft > 0) {
                 timeLeft--;
-                timerDisplay.textContent = formatTime(timeLeft);
+                display.textContent = formatTime(timeLeft);
             } else {
                 clearInterval(timer);
                 alert("Time's up!");
             }
         }, 1000);
     }
-    startBtn.disabled = true;  
+    strtBtn.disabled = true;  
     pauseBtn.disabled = false;
-    stopBtn.disabled = false; 
+    resetBtn.disabled = false; 
 }
 
 function pauseTimer() {
     clearInterval(timer);
     isPaused = true;
-    startBtn.disabled = false;  // Enable start button to resume
-    pauseBtn.disabled = true;   // Disable pause button
+    strtBtn.disabled = flase;  
+    pauseBtn.disabled = true;   
 }
 
-function stopTimer() {
+function resetTimer() {
     clearInterval(timer);
-    timeLeft = 25 * 60;  // Reset time to 25 minutes
-    timerDisplay.textContent = formatTime(timeLeft);
-    startBtn.disabled = false;  // Enable start button
-    pauseBtn.disabled = true;   // Disable pause button
-    stopBtn.disabled = true;    // Disable stop button
+    timeLeft = 25 * 60; 
+    display.textContent = formatTime(timeLeft);
+    strtBtn.disabled = false; 
+    pauseBtn.disabled = true;  
+    resetBtn.disabled = true;  
 }
 
-startBtn.addEventListener('click', startTimer);
+strtBtn.addEventListener('click', strtTimer);
 pauseBtn.addEventListener('click', pauseTimer);
-stopBtn.addEventListener('click', stopTimer);
+resetBtn.addEventListener('click', resetTimer);
 
-pauseBtn.disabled = true;  // Disable pause button initially
-stopBtn.disabled = true;   // Disable stop button initially
+pauseBtn.disabled = true;  
+resetBtn.disabled = true;

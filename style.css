@@ -5,7 +5,7 @@
 }
 
 body {
-  
+  background-color: cadetblue;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,19 +37,24 @@ button {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
-#start-btn{
+#strt-btn{
     background-color: rgba(0, 128, 0, 0.719);
 }
 #pause-btn{
     background-color:yellow;
 }
-#stop-btn{
+#reset-btn{
     background-color: red;
-
+}
 button:hover {
     background-color: #ddd;
 }
 
 button:active {
     background-color: #ccc;
+}
+#time-to-focus{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5vh;
 }
